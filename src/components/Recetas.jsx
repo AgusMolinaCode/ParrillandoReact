@@ -2,11 +2,15 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 import { motion } from "framer-motion"
 import { Link } from 'react-router-dom';
+import { ScaleLoader } from 'react-spinners';
+
 
 const Recetas = () => {
 
 const [food, setFood] = useState([]);
 const [originalFood,setOriginalFood] = useState([])
+const [isLoading, setIsLoading] = useState(true);
+
 
 
 useEffect(() => {
@@ -19,6 +23,7 @@ useEffect(() => {
     .then((response) => {
         setOriginalFood(response.data.data);
         setFood(response.data.data);
+        setIsLoading(false);
     })
     .catch((error) => {
         console.log(error);
@@ -78,6 +83,14 @@ const filtrarDificultad = (dificultad) => {
             </div>
         </div>
 
+
+        {isLoading ? (<ScaleLoader 
+                        className='text-center m-[100px]'
+                        height={60}
+                        margin={2}
+                        width={4} 
+                        color="#c72525" />)  : (
+         <>
         <div className='grid grid-cols-1 lg:grid-cols-4 gap-6 pt-4'>
             {food.map((item) => (
                 <div key={item.id} className='border rounded-xl shadow-2xl hover:scale-105 duration-300'>
@@ -97,6 +110,8 @@ const filtrarDificultad = (dificultad) => {
                 </div>
             ))}
         </div>
+        </>
+        )}
 
     </div>
   )

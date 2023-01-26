@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import { ScaleLoader } from 'react-spinners';
 
 const Evento = () => {
 
@@ -31,7 +32,14 @@ return (
 
         <div className='max-w-[1640px]  mx-auto p-4 py-5 grid  gap-6'>
             {isLoading ? 
-                <div></div>
+                <div>
+                  <ScaleLoader 
+                        className='text-center m-[100px]'
+                        height={60}
+                        margin={2}
+                        width={4} 
+                        color="#c72525" />
+                </div>
             : (typeof fiesta === 'object' && fiesta.attributes) ? 
             
             <div>

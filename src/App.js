@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DetalleConsejo from './components/DetalleConsejo';
 import Navbar from "./components/Navbar";
 import Recetas from "./components/Recetas";
@@ -9,6 +9,11 @@ import Footer from "./components/Footer";
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  setTimeout(() => {
+    setIsLoading(true);
+  }, 4000);
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -19,9 +24,10 @@ function App() {
         <Route path='/consejo/:Id' element={<DetalleConsejo/>} />
 
       </Routes>
-      {/* <Footer /> */}
+      <Footer isLoading={isLoading}/>
 </BrowserRouter>
   );
 }
 
 export default App;
+

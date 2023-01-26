@@ -2,11 +2,13 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 import { motion } from "framer-motion"
 import { Link } from 'react-router-dom';
+import { ScaleLoader } from 'react-spinners';
 
 
 const MejoresRecetas = () => {
 
   const [recetas, setRecetas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -17,6 +19,7 @@ const MejoresRecetas = () => {
       })
       .then((response) => {
         setRecetas(response.data.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -26,14 +29,24 @@ const MejoresRecetas = () => {
 
   return (
     <div>
+         
+        
+        
         <h1 className='text-center text-5xl font-Bakbak font-bold mt-5'>Mejores <span className='font-Bakbak text-red-600 font-bold'>Recetas</span></h1>
         <Link to={'/recetas'}>
         <motion.button whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }} className='border-white font-Bakbak mx-auto bg-red-600 text-white flex mt-6'>VER TODAS LAS RECETAS</motion.button>
         </Link>
-        <div className='max-w-[1640px] mx-auto p-4 py-12 grid md:grid-cols-3 gap-6'>
         
 
+        {isLoading ? (<ScaleLoader 
+                        className='text-center m-[100px]'
+                        height={60}
+                        margin={2}
+                        width={4} 
+                        color="#c72525" />)  : (
+         <> 
+        <div className='max-w-[1640px] mx-auto p-4 py-12 grid md:grid-cols-3 gap-6'>
         {recetas.slice(0,3).map((receta) => (
         <div key={receta.id}>    
             <div className='rounded-xl relative'>
@@ -48,7 +61,11 @@ const MejoresRecetas = () => {
             </div>
         </div>
         ))}  
-        </div>
+        </div> 
+        </>
+        )}
+        
+       
     </div>  
   )
 }

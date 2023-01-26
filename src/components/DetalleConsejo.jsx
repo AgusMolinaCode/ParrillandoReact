@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import { ScaleLoader } from 'react-spinners';
+
 
 const DetalleConsejo = () => {
 
@@ -28,7 +30,14 @@ const DetalleConsejo = () => {
   return (
     <div className='relative'>
       {isLoading ? 
-                <div></div>
+                <div>
+                  <ScaleLoader 
+                        className='text-center m-[100px]'
+                        height={60}
+                        margin={2}
+                        width={4} 
+                        color="#c72525" />
+                </div>
             : (typeof consejos === 'object' && consejos.attributes) ? 
             
           
