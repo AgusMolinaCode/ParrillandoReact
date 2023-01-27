@@ -35,7 +35,6 @@ const Navbar = () => {
             <nav>
                 <ul className='flex flex-col gap-2 p-4 text-gray-800'>
                     <button><Link to='/recetas' className='text-xl py-3 flex'><IconChefHat size={30} className='mr-3' />Recetas</Link></button>
-                    <button className='text-xl py-3 flex'><IconMail size={30} className='mr-3' />Contacto</button>
                 </ul>
             </nav>
         </div>
