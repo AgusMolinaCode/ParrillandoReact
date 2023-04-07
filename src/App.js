@@ -5,14 +5,11 @@ import Recetas from "./components/Recetas";
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Main from "./components/Main";
 import Detalle from "./components/Detalle";
-import Footer from "./components/Footer";
+
+
 
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  setTimeout(() => {
-    setIsLoading(true);
-  }, 4000);
 
   return (
     <BrowserRouter>
@@ -20,11 +17,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/recetas" element={<Recetas />} />
-        <Route path='/detalle/:Id' element={<Detalle/>} />
-        <Route path='/consejo/:Id' element={<DetalleConsejo/>} />
+        <Route path='/detalle/:id' element={<Detalle/>} />
+        <Route path='/consejo/:id' element={<DetalleConsejo/>} />
 
       </Routes>
-      <Footer isLoading={isLoading}/>
+      
 </BrowserRouter>
   );
 }
