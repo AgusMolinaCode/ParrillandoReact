@@ -70,12 +70,12 @@ const Detalle = () => {
                 
                 <hr className='m-3 border-slate-700 border-solid border-1' />
 
-                <div className='flex justify-center m-2 mx-auto'>
+                <div className='flex justify-center m-2 p-2 mx-auto'>
                   <h2 className='text-[35px] lg:m-[3rem] font-Bakbak text-center '>
                     Instrucciones:
-                    <ol className='list-decimal m-2'>
+                    <ol className='list-decimal p-1 m-2'>
                       {receta.instrucciones.map((instruccion, index) => (
-                        <li className=' p-2 m-2 text-lg lg:text-xl' key={index}>{instruccion}</li>
+                        <li className=' p-3 m-4 text-lg lg:text-xl' key={index}>{instruccion}</li>
                       ))}
                     </ol>
                   </h2>
